@@ -15,7 +15,7 @@ read var
 echo 'create_list $head' $var >> _tmp.gdb
 
 exec < $1
-echo ' '>>$2
+echo ' '>$2
 echo 'set logging file '$2 >> _tmp.gdb
 
 while (read var) 

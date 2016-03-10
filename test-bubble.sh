@@ -10,7 +10,7 @@ echo 'set $head = (List**)malloc(sizeof(List*))' >> _tmp.gdb
 
 echo 'set logging file '$2>>_tmp.gdb
 
-echo ' '>>$2
+echo ' '>$2
 exec < $1
 
 while  (read var) 
