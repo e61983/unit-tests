@@ -14,7 +14,10 @@ OBJS := \
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-bin-%: %.o stub.o
+bin-swap: swap.o stub.o
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+bin-bubble: stub.o swap.o bubble.o
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 check: $(EXEC)

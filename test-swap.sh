@@ -6,9 +6,9 @@ echo source scripts/create_list.gdb >> _tmp.gdb
 echo source scripts/printf_list.gdb >> _tmp.gdb
 echo source scripts/find_node_address.gdb >> _tmp.gdb
 
-echo 'set $head = (List*)0' >> _tmp.gdb
-echo 'set $node1 = (List*)0' >> _tmp.gdb
-echo 'set $node2 = (List*)0' >> _tmp.gdb
+echo 'set $head = (pList)0' >> _tmp.gdb
+echo 'set $node1 = (pList)0' >> _tmp.gdb
+echo 'set $node2 = (pList)0' >> _tmp.gdb
 
 exec < $1
 read var

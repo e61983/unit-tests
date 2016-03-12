@@ -6,7 +6,7 @@ echo 'source scripts/create_list.gdb' >> _tmp.gdb
 echo 'source scripts/print_list.gdb' >> _tmp.gdb
 echo 'source scripts/free_list.gdb' >> _tmp.gdb
 
-echo 'set $head = (List**)malloc(sizeof(List*))' >> _tmp.gdb
+echo 'set $head = (pList*)malloc(sizeof(pList))' >> _tmp.gdb
 
 echo 'set logging file '$2>>_tmp.gdb
 

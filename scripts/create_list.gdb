@@ -1,17 +1,17 @@
 def create_list
 
 p $i = 0
-p $tmp = (List*)malloc(sizeof(List))
+p $tmp = (pList)malloc(sizeof(struct List))
 p $tmp->value = $i
-p $tmp->next = (List*)0
+p $tmp->next = (pList)0
 p $arg0 = $tmp
 p $_head = $arg0
 p $i = 1
 
 while($i<$arg1)
-	p $tmp = (List*)malloc(sizeof(List))
+	p $tmp = (pList)malloc(sizeof(struct List))
 	p $tmp->value = $i
-	p $tmp->next = (List*)0
+	p $tmp->next = (pList)0
 
 	p $arg0->next = $tmp
 

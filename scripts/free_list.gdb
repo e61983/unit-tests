@@ -1,7 +1,7 @@
 def free_list
 
 set $_head = $arg0
-set $_next = (List*)0
+set $_next = (pList)0
 
 while($_head)
 	
