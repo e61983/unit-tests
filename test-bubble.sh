@@ -6,6 +6,11 @@ echo 'source scripts/create_list.gdb' >> _tmp.gdb
 echo 'source scripts/print_list.gdb' >> _tmp.gdb
 echo 'source scripts/free_list.gdb' >> _tmp.gdb
 
+echo 'def test' >>_tmp.gdb
+echo 'init-if-undefined $RESOULT = 0' >>_tmp.gdb
+echo 'p $RESOULT = $arg0 != $arg1' >>_tmp.gdb
+echo 'end' >>_tmp.gdb
+
 echo 'set $head = (pList*)malloc(sizeof(pList))' >> _tmp.gdb
 
 echo 'set logging file '$2>>_tmp.gdb
@@ -21,6 +26,8 @@ do
 	echo 'create_list (*($head)) '$list_length >> _tmp.gdb
 	read var
 	list_value=($var)
+    read var
+    list_expcted=($var)
 
 	echo 'set $_head = (*($head))' >> _tmp.gdb
 
@@ -40,6 +47,13 @@ do
 	echo 'p "new_list"' >> _tmp.gdb
 	echo 'printf_list (*($head))' >> _tmp.gdb
 
+	echo 'set $_head = (*($head))' >> _tmp.gdb
+	for value in "${list_expcted[@]}"
+	do
+        echo 'p "test '$value' $_head->value"'>> _tmp.gdb
+        echo 'test '$value' $_head->value '>> _tmp.gdb
+        echo 'set $_head = $_head->next' >> _tmp.gdb
+	done
 	echo 'set logging off' >> _tmp.gdb
 	echo 'free_list (*($head))' >> _tmp.gdb
 done
