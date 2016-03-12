@@ -40,7 +40,10 @@ do
 	echo 'printf_list $head' >> _tmp.gdb
 	echo 'set logging off' >> _tmp.gdb
 done
+echo 'q' >> _tmp.gdb
+echo 'y' >> _tmp.gdb
 
 gdb -q -x _tmp.gdb bin-swap >> /dev/null
-
+result=$?
 rm _tmp.gdb
+exit $result

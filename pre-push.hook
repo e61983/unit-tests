@@ -1,0 +1,11 @@
+#!/bin/sh
+RESULT=0
+for test_file in test-*;
+do
+    sub_string=${test_file#test-}
+    sub_string=${sub_string%.sh}
+    `pwd`/$test_file data-$sub_string.in result-$sub_string
+    result=$?
+    RESULT=`echo "$RESULT+$result"|bc`
+done
+exit $RESULT 

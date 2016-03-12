@@ -48,5 +48,6 @@ echo 'q' >> _tmp.gdb
 echo 'y' >> _tmp.gdb
 
 gdb -q -x _tmp.gdb bin-bubble >>/dev/null
-
+result=$?
 rm _tmp.gdb
+exit $result
