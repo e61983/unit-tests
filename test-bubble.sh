@@ -5,11 +5,7 @@ echo 'r' >> _tmp.gdb
 echo 'source scripts/create_list.gdb' >> _tmp.gdb
 echo 'source scripts/print_list.gdb' >> _tmp.gdb
 echo 'source scripts/free_list.gdb' >> _tmp.gdb
-
-echo 'def test' >>_tmp.gdb
-echo 'init-if-undefined $RESOULT = 0' >>_tmp.gdb
-echo 'p $RESOULT = $arg0 != $arg1' >>_tmp.gdb
-echo 'end' >>_tmp.gdb
+echo 'source scripts/test.gdb' >> _tmp.gdb
 
 echo 'set $head = (pList*)malloc(sizeof(pList))' >> _tmp.gdb
 
@@ -18,6 +14,7 @@ echo 'set logging file '$2>>_tmp.gdb
 echo ' '>$2
 exec < $1
 
+echo 'set $RESULT = 0' >> _tmp.gdb
 while  (read var) 
 do
 	read var
@@ -58,7 +55,7 @@ do
 	echo 'free_list (*($head))' >> _tmp.gdb
 done
 
-echo 'q' >> _tmp.gdb
+echo 'q $RESULT' >> _tmp.gdb
 echo 'y' >> _tmp.gdb
 
 gdb -q -x _tmp.gdb bin-bubble >>/dev/null

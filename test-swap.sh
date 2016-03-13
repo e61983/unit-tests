@@ -42,9 +42,9 @@ do
     echo 'p "new_list"' >> _tmp.gdb
     echo 'printf_list $head' >> _tmp.gdb
     echo 'p "test '$node_1' '$node_2'"' >> _tmp.gdb
-    echo 'test $old_node1_next $node2' >>_tmp.gdb
+    echo 'test $old_node1_next $node2->next' >>_tmp.gdb
     echo 'p "test '$node_2' '$node_1'"' >> _tmp.gdb
-    echo 'test $old_node2_next $node1' >>_tmp.gdb
+    echo 'test $old_node2_next $node1->next' >>_tmp.gdb
     echo 'set logging off' >> _tmp.gdb
 done
 echo 'q $RESULT' >> _tmp.gdb
