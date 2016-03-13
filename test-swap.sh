@@ -52,5 +52,11 @@ echo 'y' >> _tmp.gdb
 
 gdb -q -x _tmp.gdb bin-swap >> /dev/null
 result=$?
+if [ ${result} -ne 0 ] 
+then
+    echo "!!!!!! Fail !!!!!!"
+else
+    echo "Pass"
+fi
 rm _tmp.gdb
 exit $result
