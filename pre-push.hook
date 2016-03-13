@@ -4,8 +4,12 @@ for test_file in test-*;
 do
     sub_string=${test_file#test-}
     sub_string=${sub_string%.sh}
-    `pwd`/$test_file data-$sub_string.in result-$sub_string
+    test_name=`pwd`/$test_file
+    $test_name data-$sub_string.in result-$sub_string
     result=$?
+    if [ $result -ne 0 ];then
+        echo "at" $test_name "Test Fail";
+    fi
     RESULT=`echo "$RESULT+$result"|bc`
 done
 exit $RESULT 
