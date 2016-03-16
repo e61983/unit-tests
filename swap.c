@@ -1,4 +1,12 @@
 #include "common.h"
+
+#define SWAP(node1,node2) \
+{ \
+    pList tmp_node = node1->next; \
+    node1->next = node2->next; \
+    node2->next = tmp_node; \
+}
+
 pList swap(pList head, pList node_1, pList node_2)
 {
     if (!head &&
@@ -31,9 +39,7 @@ pList swap(pList head, pList node_1, pList node_2)
             return root;
 
         pre_node->next = first_node;
-        pList tmp_node = first_node->next;
-        first_node->next=second_node->next;
-        second_node->next=tmp_node;
+        SWAP(first_node, second_node);
         return second_node;
     }
 
@@ -44,9 +50,6 @@ pList swap(pList head, pList node_1, pList node_2)
     /* swap */
     pre_node_1->next = node_2;
     pre_node_2->next = node_1;
-
-    pList tmp_node = node_1->next;
-    node_1->next = node_2->next;
-    node_2->next = tmp_node;
+    SWAP(node_1, node_2);
     return root;
 }
